@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+  p{
+      font-size: 20px;
+      font-weight: bold;
+  }
+  pre{
+      font-size: 17px;
+      color: brown;
+      font-weight: bold;
+      
+  }
+  div{
+      border: 2px solid green;
+      margin: 2px;
+  }
+</style>
+<body>
+   <div> 1. Explain Local Scope, Block Scope, Functional Scope and Scope Chain in javascript
+     
+
+    <p> 2.What is difference between null and undefined ?</p>
+     <p> Null: It is the intentional absence of the value. It is one of the primitive values of 
+       JavaScript. <br>
+     Undefined: It means the value does not exist in the compiler.</p>
+     <pre>const foo=null
+         console.log(foo)
+         output:null
+ 
+         let a;
+         console.log(a)
+         
+         output:undefined
+     </pre>
+ </div>
+  <div> <p> 3.What is an event loop and call stack</p>
+    <p>  The event loop is an architectural design pattern that allows code to run asynchronously on the javascript 
+      engines and makes it possible for code to execute blocking instruction first and when available asynchronous 
+      functions.</p>
+  <pre>function foo(b) {
+      const a = 10;
+      return a + b + 11;
+    }
+    function bar(x) {
+      const y = 3;
+      return foo(x * y);
+    }
+    const baz = bar(7);
+  
+    output:42
+  </pre>
+  
+  <p>A call stack is a mechanism for an interpreter (like the JavaScript interpreter in a web browser) to keep 
+    track of its place in a script that calls multiple functions — what function is currently being run and what 
+    functions are called from within that function.</p>
+  <pre>  function greeting() {
+      sayHi();
+     }
+     function sayHi() {
+       console.log("Hi") ;
+     }
+     greeting();
+  
+     output:Hi
+  </pre>
+  </div>
+
+<div><p>4. What are promises and why do we need them?</p>
+  <p>A javascript promise object contains both the produsing code and call to the consuming code.
+    when the producing code obtain the result, it should call one of the two callbacks: myresolve(result value)
+    and myreject(error object).
+    A javascript promise object can be: pending,fulfilled,rejected.
+    The Promise object supports two properties: state and result.
+    While a Promise object is "pending" (working), the result is undefined.
+    When a Promise object is "fulfilled", the result is a value.
+    Promise.then() takes two arguments, a callback for success and another for failure.
+    Both are optional, so you can add a callback for success or failure only.
+    It allows you to associate handlers with an asynchronous action's eventual success value or failure reason</p>
+  <pre>function myDisplayer(some) {
+      console.log(some) ;
+   }
+   let myPromise = new Promise(function(myResolve, myReject) {
+     let x = 0;
+    if (x == 0) {
+       myResolve("OK");
+     } else {
+       myReject("Error");
+     }
+   });
+   myPromise.then(
+       function(value) {myDisplayer(value);},
+       function(error) {myDisplayer(error);}
+     );
+  
+     output:OK
+   </pre>
+  </div>
+
+<div> <p>5.What is promise chaining</p>
+  <p> JavaScript Promise Chaining. Promises are useful when you have to handle more than one asynchronous task, one after another. For that, we use promise chaining.
+    Create a Promise · The then() method · The catch() method</p>
+  <pre>new Promise(function (resolve, reject) {
+      setTimeout(() => resolve(2), 1500); // (*)
+    }).then(function (result) { // (**)
+      console.log(result); // 2
+      return result + 2;
+    }).then(function (result) { // (***)
+      console.log(result); // 4
+      return result + 2;
+    }).then(function (result) {
+      console.log(result); // 6
+      return result + 2;
+    });
+  
+    output:2 
+           4
+           6
+  </pre>
+</div>
+
+<div><p>6. What are pure functions?</p>
+  <p>A Pure Function is a function (a block of code) that always returns the same result if the same arguments 
+    are passed. It does not depend on any state or data change during a program's execution. Rather, it only 
+    depends on its input arguments.</p>
+  <pre>   function calculateGST( productPrice ) {
+      return productPrice * 0.05;
+      }
+      console.log(calculateGST(15))
+  
+      output:0.75
+  </pre>
+</div>
+
+
+    <script src="./main.js"></script>
+</body>
+</html>
